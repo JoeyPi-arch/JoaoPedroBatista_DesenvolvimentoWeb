@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmação de Cadastro</title>
+</head>
+
+<body>
+
+<h1>Autor cadastrado!</h1>
+
+<p>
+    Nome:
+    <span th:text="${autor.nome}"></span>
+</p>
+
+<p>
+    E-mail:
+    <span th:text="${autor.email}"></span>
+</p>
+
+<nav>
+    <a th:href="@{/autores/novo}">
+        Cadastrar outro autor
+    </a>
+
+    <a th:href="@{/autores}">
+        Voltar
+    </a>
+</nav>
+
+</body>
+</html>

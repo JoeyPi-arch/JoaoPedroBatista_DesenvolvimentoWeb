@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca - Autores</title>
+</head>
+
+<body>
+
+<h1>Gerenciamento de Autores</h1>
+
+
+<a th:href="@{/autores/novo}">Cadastrar novo autor</a>
+
+<hr>
+
+<h2>Autores cadastrados</h2>
+
+<p th:if="${#lists.isEmpty(autores)}">
+    Nenhum autor cadastrado.
+</p>
+
+<table border="1" th:unless="${#lists.isEmpty(autores)}">
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="autor : ${autores}">
+
+        <td th:text="${autor.id}"></td>
+
+        <td th:text="${autor.nome}"></td>
+
+        <td th:text="${autor.email}"></td>
+
+        <td>
+
+
+            <form th:action="@{/autores/excluir/{id}(id=${autor.id})}"
+                  method="post"
+                  style="display:inline"
+                  onsubmit="return confirm('Deseja excluir este livro?');">
+
+                <button type="submit">Excluir</button>
+
+            </form>
+
+        </td>
+
+    </tr>
+
+    </tbody>
+
+</table>
+
+<br>
+
+<a th:href="@{/}">Voltar ao início</a>
+
+</body>
+</html>

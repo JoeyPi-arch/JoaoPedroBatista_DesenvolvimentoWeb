@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca - Início</title>
+</head>
+
+<body>
+
+<h1 th:text="${nomeSistema}">
+    Sistema de Biblioteca
+</h1>
+
+<p th:text="${mensagemBoasVindas}">
+    Bem-vindo!
+</p>
+
+<nav>
+    <a th:href="@{/livros}">Livros</a>
+
+    <a th:href="@{/autores}">Autores</a>
+</nav>
+
+</body>
+</html>
