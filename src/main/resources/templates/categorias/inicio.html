@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca - Categorias</title>
+</head>
+<body>
+
+<h1>Gerenciamento de Categorias</h1>
+
+<a th:href="@{/categorias/novo}">Cadastrar Categoria</a>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="categoria : ${categorias}">
+        <td th:text="${categoria.id}"></td>
+        <td th:text="${categoria.nome}"></td>
+
+        <td>
+            <form th:action="@{/categorias/excluir/{id}(id=${categoria.id})}"
+                  method="post">
+
+                <button type="submit">Excluir</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+<a th:href="@{/}">Voltar ao início</a>
+
+</body>
+</html>

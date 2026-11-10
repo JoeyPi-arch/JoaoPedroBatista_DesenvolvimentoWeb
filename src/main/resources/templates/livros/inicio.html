@@ -30,6 +30,7 @@
         <th>Autor</th>
         <th>ISBN</th>
         <th>Ações</th>
+        <th>Categoria</th>
     </tr>
     </thead>
 
@@ -44,6 +45,8 @@
         <td th:text="${livro.autor}"></td>
 
         <td th:text="${livro.isbn}"></td>
+
+        <td th:text="${livro.categoria != null ? livro.categoria.nome : 'Sem categoria'}"></td>
 
         <td>
 
