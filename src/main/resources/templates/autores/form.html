@@ -4,19 +4,28 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Cadastrar Autor</title>
+    <title>Gerenciamento de Autores</title>
 </head>
 
 <body>
 
-<h1>Cadastrar Autor</h1>
+<h1 th:text="${autor.id == null} ? 'Cadastrar Autor' : 'Editar Autor'">
+    Cadastrar Autor
+</h1>
 
-<form th:object="${autor}"
-      th:action="@{/autores}"
+<form th:action="${autor.id == null} ?
+      @{/autores} :
+      @{/autores/editar/{id}(id=${autor.id})}"
+      th:object="${autor}"
       method="post">
 
     <label>Nome:</label>
     <input type="text" th:field="*{nome}" required>
+
+    <br><br>
+
+    <label>Nacionalidade:</label>
+    <input type="text" th:field="*{nacionalidade}" required>
 
     <br><br>
 
@@ -25,9 +34,14 @@
 
     <br><br>
 
-    <button type="submit">Cadastrar</button>
+    <button type="submit"
+            th:text="${autor.id == null} ? 'Cadastrar' : 'Salvar Alterações'">
+        Cadastrar
+    </button>
 
 </form>
+
+<br>
 
 <a th:href="@{/autores}">Voltar à listagem</a>
 

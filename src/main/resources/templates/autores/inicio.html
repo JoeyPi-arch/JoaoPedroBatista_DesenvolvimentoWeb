@@ -11,7 +11,6 @@
 
 <h1>Gerenciamento de Autores</h1>
 
-
 <a th:href="@{/autores/novo}">Cadastrar novo autor</a>
 
 <hr>
@@ -28,6 +27,7 @@
     <tr>
         <th>ID</th>
         <th>Nome</th>
+        <th>Nacionalidade</th>
         <th>E-mail</th>
         <th>Ações</th>
     </tr>
@@ -38,18 +38,20 @@
     <tr th:each="autor : ${autores}">
 
         <td th:text="${autor.id}"></td>
-
         <td th:text="${autor.nome}"></td>
-
+        <td th:text="${autor.nacionalidade}"></td>
         <td th:text="${autor.email}"></td>
 
         <td>
 
+            <a th:href="@{/autores/editar/{id}(id=${autor.id})}">
+                Editar
+            </a>
 
             <form th:action="@{/autores/excluir/{id}(id=${autor.id})}"
                   method="post"
                   style="display:inline"
-                  onsubmit="return confirm('Deseja excluir este livro?');">
+                  onsubmit="return confirm('Deseja excluir este autor?');">
 
                 <button type="submit">Excluir</button>
 

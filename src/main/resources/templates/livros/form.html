@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -13,7 +12,7 @@
     Selecione uma categoria válida.
 </p>
 
-<form th:action="@{/livros}"
+<form th:action="${livro.id == null} ? @{/livros} : @{/livros/editar/{id}(id=${livro.id})}"
       th:object="${livro}"
       method="post">
 
